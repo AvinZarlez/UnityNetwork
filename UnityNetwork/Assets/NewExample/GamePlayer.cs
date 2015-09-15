@@ -7,7 +7,7 @@ public class GamePlayer : NetworkBehaviour {
 		
 		// List of all the players kept within the player script itself,
 		// because external managers may not exist when playerscript is created.
-	static public List<GamePlayer> player_objects = new List<GamePlayer>();
+		static public List<GamePlayer> player_objects = new List<GamePlayer>();
 		
 		//Color is synced across clients so that each can color the player's game piece personally
 		[SyncVar]

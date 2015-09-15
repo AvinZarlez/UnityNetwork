@@ -26,14 +26,11 @@ public class GameManager : NetworkBehaviour {
 	void Start()
 	{
 		//init any player pre added (happen on server hosted by client, were other player can connect before the scene was loaded)
-		for (int i = 0; i < GamePlayer.player_objects.Count; ++i)
+		foreach (GamePlayer player in GamePlayer.player_objects)
 		{
-			if (GamePlayer.player_objects[i] == null)
-				continue;
-			
 			//thid is done in the OnStartLocalClient of the paddle too, but in some case, paddle is created before the scene
 			//so there is no PongManager instance. Hence we need to do it here too to be sure that thing are setup properly
-			PlayerNameText[i].text = GamePlayer.player_objects[i].playerName;
+			PlayerNameText[player.number].text = player.playerName;
 		}
 	}
 	
