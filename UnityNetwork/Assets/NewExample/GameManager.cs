@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.UI;
 using System.Collections;
 
 public class GameManager : NetworkBehaviour {
@@ -53,10 +54,8 @@ public class GameManager : NetworkBehaviour {
 		if (allReady)
 		{
 			GameRunning = true;
-			
-			ball.isFrozen = false;
-			RpcToggleBall(true);
-			ball.ResetBall(0);
+
+			// Trigger RPC functions to activate object here
 			
 			foreach (GamePlayer p in Players)
 			{
@@ -64,7 +63,7 @@ public class GameManager : NetworkBehaviour {
 					continue;
 				
 				p.score = 0;
-				p.GetComponent<SimpleController>().enabled = true;
+				//p.GetComponent<SimpleController>().enabled = true;
 				p.RpcStartGame();
 			}
 		}
